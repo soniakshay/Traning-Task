@@ -1,0 +1,251 @@
+html,body
+{
+	margin:0px;
+	padding:0px;
+}
+#header
+{
+	width:100%;
+	background:#f7f7f7;
+	z-index:9999;
+	border-bottom:1px solid #E0E0E0;
+	position:fixed;
+
+
+}
+#logodiv
+{
+	padding:10px;
+	height:100%;
+	margin-left:20px;
+	float:left;
+	
+
+
+}
+#menudiv
+{
+	height:100%;
+	margin-right:10%;
+	float:right;
+	
+}
+
+
+	
+#menudiv ul li
+{
+	list-style-type:none;
+	
+	padding:27px;
+	margin-left:20px;
+	float:left;
+}
+
+#menudiv ul li:hover
+{
+		background:#16A4FA;
+	
+}
+
+#menudiv ul li ul
+{
+	
+	display:none;
+	color:black;
+	background:#F7F8FA;
+
+	position:absolute;
+}
+#menudiv ul li ul  li {
+	
+	clear:both;
+	background:#F7F8FA;
+	margin:0px;
+	padding:27px 50px  27px 50px;
+	
+	
+}
+#menudiv ul li ul  li:hover {
+		background:#16A4FA;
+	
+	
+}
+#menudiv ul li ul
+
+{
+	margin-left:-27px;
+	margin-top:28px;
+
+
+}
+#service-item2:hover > #service-submenu
+{
+	display:block;
+}
+#gridbtn
+{
+	float:right;
+	display:none;
+	padding:20px;
+}
+
+
+#service
+{
+	background:#F7F8FA;
+	width:100%;
+	margin-top:7%;
+}
+
+
+.servicebox
+{
+	padding:70px;
+
+}
+.servicelogo
+{
+	padding:20px;
+	width:6em;
+	background:#16A4FA;
+}
+.service-contain
+{
+	padding:20px;
+}
+ul#service-submenu {
+    clear: both;
+    margin: 0px;
+    padding: 0px;
+}
+.img-container
+{
+	padding:5px;
+}
+.imageoverlay
+{
+	width: 100%;
+	height: 100%;
+	display:none
+}
+.imagebox:hover > .imageoverlay
+{
+	display:block;
+	background:rgba(22, 164, 250,0.8);
+}
+#formdiv
+{
+		width:100%;
+		background:url('../image/formbg.jpg');
+		background-position: center;
+		background-size:cover;
+		margin-top:80px;
+
+
+}
+.txtcntrl
+{
+	border:1px solid;
+	border-color: white;
+	padding:10px;
+	color:white;
+	width:90%;
+	border-radius:3px;
+	background:none;
+}
+#btndiv
+{
+	padding-left:50px;padding-right:50px;
+}
+
+#footer
+{
+	width:100%;
+	background:#f7f7f7;
+	padding-top:0px;
+	padding-bottom:0px;
+}
+.imagebox:hover
+{	
+
+}
+#submitbtn
+{
+	border:1px solid;padding:10px 20px 10px 20px;border-color:#16A4FA;color:white;float:right;
+	background:none;
+	
+}
+
+#submitbtn:hover
+{
+	background: #16A4FA;
+	
+}
+.socialmedialink
+{
+	font-size:3em;
+	color:#16A4FA;
+}
+.socialmedialink:hover
+{
+	font-size:3em;
+	color:#16A4FA;
+}
+@media only screen and (max-width: 600px) {
+#menudiv ul
+{
+	padding:0px;
+}
+#btndiv
+{
+	padding-left:40px;padding-right:29px;
+
+}
+
+	#gridbtn
+	{
+		display:block	
+	}	
+	#menudiv	
+	{
+		display:none;
+	}
+	#menudiv ul li
+	{
+		list-style-type:none;
+		
+		padding:27px;
+		margin-left:20px;
+		float:left;
+
+	}
+	
+	#menudiv ul li
+	{
+		text-align: center;
+		margin-left:20px;
+		width: 100%;
+	}
+	#menudiv ul li ul  {
+	
+			width: 100%;
+			margin: 0px;
+			padding: 0px;	
+			position:relative;
+}
+	
+}
+@media only screen and (max-width: 1024px) {
+#submitbtn
+{
+	width: 100%;
+}
+
+
+}
+
+
+
+
+

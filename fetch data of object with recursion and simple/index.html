@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+/*
+let arr = [10,20,"hello","Akshay",{ a:{	b:function(){return (10+20)}, c: "Hello",d: 10}}];
+let res=[];
+let count=1;
+for(i=0;i<arr.length;i++) {
+	let obj= {};	
+	if(typeof(arr[i])=="number") {
+	obj["key"]=arr[i];
+	obj["count"]=count+arr[i];
+	count++;
+	res.push(obj);
+	} else if(typeof(arr[i])=="string") {
+		obj["key"]=arr[i];
+		obj["name"]=arr[i];
+		res.push(obj);
+		
+	} else if(typeof(arr[i])=="object") {
+		mykey=Object.keys(arr[i]);
+		for(j=0;j< mykey.length;j++){	
+			let obj={};
+			obj["key"]=mykey[j];
+			innerkey=Object.keys(arr[i][mykey[j]]);
+			for(k=0;k< innerkey.length;k++) {	
+				obj[innerkey[k]]=arr[i][mykey[j]][innerkey[k]];
+			}
+			res.push(obj);		
+		}
+	}
+}
+console.log(res);
+*/
+
+
+let arr = [10,
+	20,
+	"hello",
+	"Akshay",
+	{ 	
+		a:{	
+			b:function(){return (10+20)}, 
+			c: "Hello",
+			d: 10
+		}
+	}
+	];
+let res=[];
+let count=1;
+for(i=0;i<arr.length;i++) {
+	let obj= {};	
+	if(typeof(arr[i])=="number") {
+	obj["key"]=arr[i];
+	obj["count"]=count+arr[i];
+	count++;
+	res.push(obj);
+	} else if(typeof(arr[i])=="string") {
+		obj["key"]=arr[i];
+		obj["name"]=arr[i];
+		res.push(obj);
+		
+	} else if(typeof(arr[i])=="object") {
+		for(let k in arr[i]){	
+			obj={};
+			
+			obj["key"]=k;
+			for(let j in arr[i][k]){
+				alert(j);
+				obj[j]=arr[i][k][j];				
+			}	
+			res.push(obj);
+		}
+	}
+}
+console.log(res);
+
+/*
+
+let arr = [10,
+	20,
+	"hello",
+	"Akshay",
+	{ 	
+		a:{	
+			b:function(){return (10+20)}, 
+			c: "Hello",
+			d: {
+				e: "akshay",
+				n:10
+			}
+		},
+		j:{	
+			b:function(){return (10+20)}, 
+			c: "Hello",
+			d: {
+				e: "akshay1",
+				n:100
+			}
+		}
+		
+
+	}
+	];
+
+
+let res=[];
+let count=1;
+	
+function recursion(obj) {
+	let obj1= {};
+	let ke=Object.keys(obj);
+
+	ke.forEach(function(k){
+		
+		obj1["key"]=k;
+		if(typeof(obj[k])=="object"){
+			recursion(obj[k]);	
+		}	
+		else{	
+			obj1[k]=obj[k];
+			res.push(obj1);
+		}
+		obj1={};
+	});
+}
+
+for(i=0;i<arr.length;i++) {
+	let obj= {};	
+	if(typeof(arr[i])=="number") {
+	obj["key"]=arr[i];
+	obj["count"]=count+arr[i];
+	count++;
+	res.push(obj);
+	} else if(typeof(arr[i])=="string") {
+		obj["key"]=arr[i];
+		obj["name"]=arr[i];
+		res.push(obj);
+		
+	} else if(typeof(arr[i])=="object") {
+		
+		
+		recursion(arr[i]);
+
+	}
+}
+console.log(res);
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+  
+</head>
+<body>
+
+
+</body>
+</html>
+

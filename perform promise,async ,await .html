@@ -1,0 +1,68 @@
+<html>
+<head>
+	<script type="text/javascript">
+		
+		async function getdata()
+		 {
+
+		 	try
+		 	{
+		 		let response= await fetch("https://jsonplaceholder.typicode.com/photos");
+		 		let jsondata=await response.json();
+		 		jsondata.forEach(function(d){
+							var div=document.getElementById("image");
+							let img=document.createElement("img");
+				 			img.src=d.url;
+			 				img.height="100";
+			 				img.width="100";
+			 				div.appendChild(img);
+						});
+		 	}catch(e)
+		 	{
+		 		console.log("Not Receiving Response ");
+		 	}		
+		}
+		
+
+
+/*
+		promise=new Promise(function(resolve,reject){
+					
+					
+					fetch("https://sonplaceholder.typicode.com/photos").then(function(res){
+						resolve(res);
+					}).catch(function(e){
+						reject(new Error("Not Receiving Response "));
+					});
+
+
+						
+						
+				})
+				.then(function(response){
+						
+
+						data=response.json()
+						data.then(function(data1){
+							data1.forEach(function(d){
+							var div=document.getElementById("image");
+							let img=document.createElement("img");
+				 			img.src=d.url;
+			 				img.height="100";
+			 				img.width="100";
+			 				div.appendChild(img);
+						});
+
+				})
+
+			}).catch(function(e){
+				console.log(e);
+			});
+*/
+	</script>
+</head>
+<body onload="getdata()">
+	<div id="image">
+	</div>
+</body>
+</html>

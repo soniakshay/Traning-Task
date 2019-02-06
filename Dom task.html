@@ -1,0 +1,117 @@
+<html>
+<head>
+<style>
+input[type=text]
+{
+	width:200px;
+	height:30px;
+}
+.add{
+background:#1E90FF;
+color:white;
+padding:5px 10px;
+border:1px solid;
+}
+.remove{
+background:red;
+color:white;
+padding:5px 10px;
+border:1px solid;
+}
+td
+{
+padding:20px;
+}
+
+</style>
+<script>
+let count=1;
+
+function insertAfter(nnode, rnode) {
+    rnode.parentNode.insertBefore(nnode, rnode.nextSibling);
+
+}
+function add(a)
+{
+	var d=document.createElement("DIV");
+	d.id="mydiv"+count;
+	
+	var input = document.createElement('input'); 
+	input.type = "text";
+	input.id="txt"
+	input.setAttribute("name","txt");	
+	d.appendChild(input); 	
+	var input1 = document.createElement('input'); 
+	input1.type = "text";
+	input1.id="txt"
+	input1.setAttribute("name","txt1");
+	count++;
+	d.appendChild(input1); 		
+	var btn = document.createElement('Button'); 
+	btn.innerHTML = "+";
+	btn.setAttribute("onclick","add(this)" );
+	btn.setAttribute("class","add");
+	d.appendChild(btn); 
+	var btn1 = document.createElement('Button'); 
+	btn1.innerHTML = "-";
+	btn1.setAttribute("class","remove");
+	btn1.setAttribute("onclick","remove(this)" );
+	d.appendChild(btn1); 		
+	var pd=document.getElementById(a.parentNode.id);	
+	insertAfter(d,pd);	
+}
+
+function remove(j)
+{
+	var pd=document.getElementById(j.parentNode.id);
+	pd.removeChild(pd.childNodes[0]);
+	pd.removeChild(pd.childNodes[1]);
+	pd.removeChild(pd.childNodes[0]);
+	pd.removeChild(pd.childNodes[0]);
+	
+}
+function getvalue()
+{	
+
+	document.getElementById("tab").innerHTML="";
+	var td,t;
+	var tbl=document.createElement("TABLE");
+	tbl.setAttribute("border","1");
+	
+	var texts = document.getElementsByName("txt");
+	var texts1= document.getElementsByName("txt1");
+	for( var i = 0; i < texts.length; i ++ ) {
+		var  tr=document.createElement("TR");
+		var  td=document.createElement("TD");
+		var t = document.createTextNode(texts[i].value);
+		td.appendChild(t);
+		tr.appendChild(td);	
+		var  td=document.createElement("TD");
+		var t = document.createTextNode(texts1[i].value);
+		td.appendChild(t);
+		
+		tr.appendChild(td);		
+		tbl.appendChild(tr);		 
+		
+  	}	
+	document.getElementById("tab").appendChild(tbl);
+}
+
+</script>
+<head>
+</head>
+<div id="mydiv">
+	<input type="text" id="txt" name="txt"> 
+	<input type="text" id="txt" name="txt1"> 
+	<button onclick="add(this)" class="add">+</button> 
+
+
+
+</div>
+<button onclick="getvalue()">Submit</button>
+
+
+<div id="tab">
+</div>
+</body>
+</head>

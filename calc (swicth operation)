@@ -1,0 +1,30 @@
+echo "Enter The 1st Num:"
+read num
+echo "Enter The 2nd Num:"
+read num1
+while :
+do
+	echo "Enter The Operator"
+	read opr
+	case $opr in
+		+)
+			echo $((num+num1))
+		;;
+		-)
+			echo $((num-num1))
+		;;	
+		%)
+			echo $((num % num1))
+		;;
+
+		/)
+			echo $((num / num1))
+		;;
+		*)
+			echo "WRONG OPERATPR"
+		;;
+	
+	esac
+	
+done
+

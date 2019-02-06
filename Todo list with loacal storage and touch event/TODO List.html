@@ -1,0 +1,237 @@
+<html>
+<head>
+	<title>Todo List::Created By:-Akshay Soni</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script>
+		var pagex;
+		var pagex1;
+
+
+
+		let j=JSON.parse(localStorage.getItem("mydata"));
+		if(j== null)
+		{
+
+			let a={};
+			a["data"]=["demo"];
+			localStorage.setItem("mydata",JSON.stringify(a));
+		}
+
+		function loaddata()
+		{	
+
+			let data1=JSON.parse(localStorage.getItem("mydata"));
+			let arr=data1["data"];
+			var cnt=0;
+			for(let val of arr)
+			{
+
+				var div = document.createElement("DIV");
+				div.setAttribute("onmousedown","touchstart(event,this)");
+				
+				
+				div.setAttribute("onmouseup","touchend(event,this)");
+				div.setAttribute("ontouchmove","mobiletouch(event,this)");
+
+				div.setAttribute("class","innerdiv");
+				div.classList.add("flipInX");
+
+				var h1tag = document.createElement("H1");
+
+				var txt= document.createTextNode(val);
+				h1tag.appendChild(txt);
+
+				div.appendChild(h1tag);
+
+				var btn = document.createElement("BUTTON");
+				btn.innerHTML="X";
+				btn.value=cnt;
+				btn.setAttribute("onclick","del(this)");
+
+				div.appendChild(btn);
+
+				var datadiv=document.getElementById("datadiv");
+				datadiv.appendChild(div);
+				cnt++;
+			}
+
+		}
+
+		function del(a)
+		{
+			let data1=JSON.parse(localStorage.getItem("mydata"));
+			let arr=data1["data"];
+			arr.splice(a.value,1);
+			localStorage.setItem("mydata",JSON.stringify(data1));
+			location.reload();
+		}
+		function abc()
+		{
+			let data1=JSON.parse(localStorage.getItem("mydata"));
+			let arr=data1["data"];
+			var val=document.getElementById("text").value;
+			arr.unshift(val);
+			localStorage.setItem("mydata",JSON.stringify(data1));
+
+
+//	var li = document.createElement("LI");
+
+//	li.innerHTML=inputvalue;
+
+///	var uldiv=document.getElementById("data");
+//	uldiv.appendChild(li);
+
+
+
+}
+
+function touchstart(event)
+{
+	 pagex=0;
+	 pagex=0;
+	pagex=event.pageX;
+		//console.log(pagex);	
+
+
+	}
+	function touchend(event,j)
+	{
+
+		pagex1=event.pageX;
+		//console.log(pagex1);
+
+		touchevent(j);
+	}
+	function touchevent(k)
+	{
+		var x=pagex1-pagex;
+
+		if(x > 10)
+		{
+			k.style.marginLeft="0%";
+			k.style.transition="1s";
+		}	
+		if(x < 0)
+		{
+			k.style.marginLeft="-32%";
+			k.style.transition="1s";
+		}
+	}
+	function mobiletouch(event,k)
+	{
+		 pagex=0;
+	 	pagex=0;
+		pagex=event.touches[0].clientX;;
+		pagex1=event.touches[0].clientY;
+		var x=pagex1-pagex;
+
+		if(x < 10)
+		{
+			k.style.marginLeft="0%";
+			k.style.transition="1s";
+		}	
+		if(x > 0)
+		{
+			k.style.marginLeft="-32%";
+			k.style.transition="1s";
+		}
+	}
+
+
+</script>
+<style>
+html,body
+{
+	margin:0px;
+	padding:0px;
+}
+.data
+{
+	width:100%;
+	padding:10px;
+	background:red;
+	color:white;
+}
+.main
+{
+	border:1px solid;
+	background:red;
+	padding: 10px;
+}
+.datadiv
+{
+
+	width:100%;
+	color:white;
+	border-bottom: 1px solid white;
+	overflow:hidden;
+}
+.innerdiv
+{
+
+	display:flex;
+	width:130%;
+
+}
+.innerdiv button
+{
+
+	color:red;
+
+	background:white;
+	padding: 20px;
+	border:none;
+
+}
+.innerdiv h1
+{
+	width:465px;
+
+}
+/*.innerdiv:hover
+{
+	margin-left: -32%;
+	transition:1s;
+	}*/
+
+
+
+
+</style>
+</head>
+
+<body onload="loaddata()">
+
+
+	<div class="container">
+		<div class="row ">
+			<div class="col-lg-4 col-md-4"  >
+
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 main" >
+				<form onsubmit="abc()">
+					<input type="text" id ="text" style="width: 100%;font-size: 20px;padding:5px;" autofocus="on" autocomplete="off" placeholder="Enter Data...">
+				</form>
+			</div>
+		</div>
+		<div class="row " >
+			<div class="col-lg-4 col-md-4" >
+
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="background:red;"  >
+				<div class="datadiv" id="datadiv">
+					
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</head>

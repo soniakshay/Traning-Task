@@ -1,0 +1,38 @@
+a=""
+t=" "
+myfunc()
+{	
+	cd $a
+	pwd
+	for k in $( ls | awk '{ print $0 }')	
+	do
+		
+	    	if [[ -d  $k ]];
+		then
+
+			a=$k	
+			#echo -e  $a '=>'
+			myfunc
+		else
+			echo -e '\t' $k
+			
+		fi
+	done
+	cd ..
+
+
+}
+
+for  j in  $( ls | awk '{ print $0 }')
+do
+	
+	if [[ -d  $j ]];
+	then
+		a=$j
+		#echo -e  $a '=>'  
+		myfunc
+	else
+		echo  $j 
+			
+	fi
+done

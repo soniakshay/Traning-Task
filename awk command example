@@ -1,0 +1,4 @@
+for k in $( ls -l | awk '{print $9}')	
+do
+	mv $k $k.new 
+done

@@ -1,0 +1,295 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script>
+	var lap=new Array();
+		var hour=0;
+		var min=0;
+		var sec=0;
+		var obj={};
+		
+
+		function pad2(number) {
+				return (number < 10 ? '0' : '') + number
+		}
+		function incrementsec()
+		{
+
+			if(sec >= 59)
+			{
+				sec=0;
+			}
+			else
+			{
+				sec++;
+			}
+			document.getElementById("sectext").innerHTML=pad2(sec);
+		}
+		function incrementmin()
+		{
+
+			if(min >= 59)
+			{
+				min=0;
+			}
+			else{
+				if(sec >= 59)
+				{
+					min++;
+				}
+			}
+				
+			document.getElementById("mintext").innerHTML=pad2(min);
+		}
+		function incrementhour()
+		{
+			if(hour >= 59)
+			{
+				hour=0;
+			}
+			else{
+				if(min >= 59)
+				{
+					hour++;
+				}
+			}
+				
+			document.getElementById("hourtext").innerHTML=pad2(hour)
+		}
+		var time;
+		function start()
+		{
+			time=setInterval(function(){ incrementsec();incrementmin(); incrementhour() }, 1000);
+			document.getElementById("lapbtn").disabled = false;
+		}
+		function stop()
+		{
+			clearInterval(time);
+			
+		}
+		function reset()
+		{
+			hour=0;
+			min=0;
+			sec=0;
+			localStorage.setItem("sflag",false);
+		
+			document.getElementById("hourtext").innerHTML=pad2(hour);
+			document.getElementById("mintext").innerHTML=pad2(min);
+			document.getElementById("sectext").innerHTML=pad2(sec);
+
+			clearInterval(time);
+		}
+		var cnt=0;
+		function laptime()
+		{	
+			cnt++;
+	
+			if(cnt>10)
+			{
+				alert("Only 10 lap allow");
+			}
+			else
+			{
+			
+					var div=document.createElement("DIV");
+					div.setAttribute("class", "col-lg-12 col-md-12  col-sm-12 col-xs-12"); 
+					div.setAttribute("style", "border-left:5px solid;border-color:#FFD300;background:white;margin-top:10px;padding:10px;");			
+					var s=document.createElement("SPAN");
+							
+					
+					var s1=document.createElement("SPAN");
+					s1.setAttribute("style", "float:right;");			
+					
+					
+					if(lap.length==0)
+					{
+						time=pad2(hour).toString() + pad2(min).toString() + pad2(sec).toString();
+						obj.ctime=time;
+						obj.laptime=time;
+						//alert(obj.ctime);
+						//alert(obj.laptime);
+					
+						lap.push(obj);
+						
+						var t = document.createTextNode(pad2(hour) + ":" + pad2(min)+ ":" + pad2(sec));
+						var t1 = document.createTextNode(pad2(hour) + ":" + pad2(min)+ ":" + pad2(sec));
+						obj = null;
+						
+						s.appendChild(t);
+						s1.appendChild(t1);
+					}
+					else{
+							var ind=lap.length-1;
+							var obj1={};
+							obj1.ctime=pad2(hour).toString() + pad2(min).toString() + pad2(sec).toString();
+							//alert(obj1.ctime);
+							var currunttime=parseInt(pad2(hour).toString() +pad2(min).toString() + pad2(sec).toString());
+							//alert(currunttime);
+							var pasttime=lap[ind].ctime;
+							//alert(pasttime);
+							var laptime=currunttime-pasttime;
+							//alert(laptime);
+							if(laptime<100000 && laptime > 100000)
+							{
+								laptime="0"+laptime; //099999
+							}
+							else if(laptime<10000 && laptime >= 1000)
+							{
+								laptime="00"+laptime//009999
+							}
+							else if(laptime<1000 && laptime >= 100)
+							{
+								laptime="000"+laptime//000999
+							}
+							else if(laptime < 100 && laptime >= 10)
+							{
+								laptime="0000"+laptime //000099
+							}
+							else if(laptime < 10 )
+							{
+								laptime="00000"+laptime //000009
+							}
+							obj1.laptime=laptime;
+							lap.push(obj1);
+							
+							var t = document.createTextNode(pad2(hour) + ":" + pad2(min)+ ":" + pad2(sec));
+							var t1 = document.createTextNode(laptime.substr(0,2)+ ":" + laptime.substr(2,2)+ ":" + laptime.substr(4,2));
+							s.appendChild(t);
+							s1.appendChild(t1);
+						
+						
+						
+					}
+
+						
+						div.appendChild(s);
+						div.appendChild(s1);				
+						var lapdiv=document.getElementById("lapdiv");
+						lapdiv.appendChild(div);
+			}
+		}
+
+		
+	</script>
+	<style>
+	html,body
+	{
+		margin:0px;
+		padding:0px;
+		height:100%;
+		background-attachment:fixed;
+	}
+	.counttext
+	{
+		color:white;
+		font-size:85px;
+		
+	}
+	.btn{
+		font-size:20px;
+		width:100px;
+		color:white;
+		border-radius:50px;
+		box-shadow:0px 2px 20px 4px black;
+	}
+	.lapdiv{
+		border-left:5px solid;border-color:#FFD300;background:white;
+	}
+	#startbtn{
+		background:#FFD300;
+		
+	}
+	#lapbtn{
+	color:black;
+	background:white;
+	}
+	body{
+		background:#363A81;
+		}
+	@media only screen and (max-width:600px) {
+	.counttext
+	{
+		font-size:50px;
+	}
+	}
+
+	</style>
+	
+ </head>
+<body onbeforeunload="closewindow()" onload="openwindow()">
+ <div id="imagebg" style="width:100%;height:100%;background:url('imagebg.png');background-size:cover;background-position:center;background-attachment:fixed;"> 
+<div class="container-fluid" style="padding-top:20px;">
+	<div class="row">	
+		<div class="col-lg-3 col-md-3  col-sm-0 col-xs-0">
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		<center>	
+			<table >
+				<tr >
+					<td colspan="5" align="right">
+						 <button type="button" class="btn-default btn-sm" style="border:none;" onclick="reset()">
+							<span class="glyphicon glyphicon-refresh"></span> 
+						</button>
+						<button type="button" class="btn-default btn-sm" style="border:none;" onclick="stop()">
+							<span class="glyphicon glyphicon-stop"></span> 
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div id="hourdiv">	
+							<h1  class="counttext" id="hourtext">00</h1>
+						</div>
+					</td>
+					<td>
+						<h1  class="counttext">:</h1>
+					</td>
+					
+					<td>
+						<div id="mindiv">	
+							<h1  class="counttext" id="mintext">00</h1>
+						</div>
+					</td>
+					<td>
+						<h1  class="counttext">:</h1>
+					</td>
+					<td>
+						<div id="secdiv">	
+							<h1  class="counttext" id="sectext">00</h1>
+						</div>
+					</td>
+				</tr>
+			</table>
+			
+		</div>
+		<div class="col-lg-3 col-md-3  col-sm-0 col-xs-0">
+		</div>
+	</div>
+	<div class="row" style="padding-top:30px;">
+		<div class="col-lg-3 col-md-3  col-sm-0 col-xs-0">
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		<center>	
+			<button type="button" class="btn" id="startbtn" onclick="start()">Start</button>
+			<button type="button" class="btn" id="lapbtn" style="margin-left:10px;" onclick="laptime()" disabled="true" >Lap</button>
+	
+		</div>
+		<div class="col-lg-3 col-md-3  col-sm-0 col-xs-0">
+		</div>
+			
+	</div>
+	<div class="row" style="padding:10px;" id="lapdiv">
+	
+	</div>
+	
+</div>
+</div>
+</body>
+</html>

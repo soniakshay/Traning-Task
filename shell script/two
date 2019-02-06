@@ -1,0 +1,5 @@
+for k in $(ls  | grep -e '*' -e '\-' -e '\—' -e '\$' | awk '{ print $1 }')
+do
+	rm $k
+
+done

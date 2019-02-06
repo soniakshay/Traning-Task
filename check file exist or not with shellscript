@@ -1,0 +1,11 @@
+
+if [[ -e "Pop"  ]] ;
+then 
+	echo "Exist"
+	if [[ -r "Pop" ]]; then
+		echo "Exist"
+	fi
+else
+	echo  "Not Exist"
+fi
+
