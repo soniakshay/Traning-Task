@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="lodash.js"></script>
+	<script>
+//chunk
+//		let a=[1,2,3,4,5,6,7,8];
+//		console.log(_.chunk(a,2));
+
+
+
+// //concat
+// let a=[1,2,3,4,5,6,7,8];
+// let b=[1,2,3,4,5,6,7,8];
+// console.log(_.concat(a,b));
+
+
+//difference
+// let a=[1,2,3];
+// let b=[3,2,7];
+// console.log(_.difference(a,b));
+
+
+// //findindx
+// let a=[
+// {'user':'akshay'},
+// {'user':'ronak'},
+// {'user':'neha'},
+// ]
+
+
+// console.log(_.findIndex(a,function(o) { return o.user == 'neha'; }));
+
+
+// //indexof
+// let a=[10,20,30,40];
+// console.log(_.indexOf(a,20)); //1
+// console.log(_.indexOf(a,50)); //-1
+
+//join
+// let a=[10,20,30,40];
+// console.log(_.join(a,'~'));
+
+
+
+//last
+// let a=[10,20,30,40];
+//  console.log(_.last(a));
+
+//Pull
+// var array = ['a', 'b', 'c', 'a', 'b', 'c'];
+ 
+
+
+// _.pull(array, 'a', 'c');
+//console.log(array);
+
+
+
+
+// //remove
+// var array = [1, 2, 3, 4];
+// var evens = _.remove(array, function(n) {
+//   return n % 2 == 0;
+// });
+
+// console.log(array);
+
+
+
+// //reverse
+// var array = [1, 2, 3, 4];
+// console.log(_.reverse(array));
+
+//slice
+// var array = [1, 2, 3, 4];
+// console.log(_.slice(array,1,2));
+
+//take
+ // var array = [1, 2, 3, 4];
+ // console.log(_.take(array,2));
+
+// //union
+// var array = [1, 2, 3, 4];
+// var array1 = [2, 3];
+
+// console.log(_.union(array,array1));
+
+
+
+//uniq
+// var array = [1,1, 2,2, 3,3, 4];
+// console.log(_.uniq(array));
+
+
+// //filter
+// var users = [
+//   { 'user': 'barney', 'age': 36, 'active': true },
+//   { 'user': 'fred',   'age': 40, 'active': false }
+// ];
+ 
+// console.log(_.filter(users, function(o) { return !o.active; }));
+
+
+
+// var users = [
+//   { 'user': 'barney',  'age': 36, 'active': true },
+//   { 'user': 'fred',    'age': 40, 'active': false },
+//   { 'user': 'pebbles', 'age': 1,  'active': true }
+// ];
+ 
+// console.log(_.find(users, function(o) { return o.age < 40; }));
+
+
+// //foreach
+
+// _.forEach({ 'a': 1, 'b': 2 }, function(value, key) {
+//   console.log(key);
+// });
+
+
+//includes
+
+// console.log(_.includes([1, 2, 3], 1)); //return true false check no exist or not
+
+
+
+// function square(n) {
+//   return n * n;
+// }
+ 
+// console.log(_.map([4, 8], square));
+// // => [16, 64]
+ 
+// console.log(_.map({ 'a': 4, 'b': 8 }, square));
+// // => [16, 64] (iteration order is not guaranteed)
+ 
+// var users = [
+//   { 'user': 'barney' },
+//   { 'user': 'fred' }
+// ];
+ 
+// // The `_.property` iteratee shorthand.
+// console.log(_.map(users, 'user'));
+// // => ['barney', 'fred']
+
+
+
+
+
+
+// //size
+// console.log(_.size([1, 2, 3]));
+// // => 3
+ 
+// console.log(_.size({ 'a': 1, 'b': 2 }));
+// // => 2
+ 
+// console.log(_.size('pebbles'));
+
+
+//assign
+// function Foo() {
+//   this.a = 1;
+// }
+ 
+// function Bar() {
+//   this.c = 3;
+// }
+ 
+// Foo.prototype.b = 2;
+// Bar.prototype.d = 4;
+ 
+// console.log(_.assign({ 'a': 0 }, new Foo, new Bar));
+
+
+// forin
+// function Foo() {
+//   this.a = 1;
+//   this.b = 2;
+// }
+ 
+// Foo.prototype.c = 3;
+ 
+// _.forIn(new Foo, function(value, key) {
+//   console.log(key);
+// });
+
+
+
+
+//forinright
+
+// function Foo() {
+//   this.a = 1;
+//   this.b = 2;
+// }
+ 
+// Foo.prototype.c = 3;
+ 
+// _.forInRight(new Foo, function(value, key) {
+//   console.log(key);
+// });
+
+
+// //for own
+// function Foo() {
+//   this.a = 1;
+//   this.b = 2;
+// }
+ 
+// Foo.prototype.c = 3;
+ 
+// _.forOwn(new Foo, function(value, key) {
+//   console.log(key);
+// });
+
+//has check object query path valid or not
+
+
+//keys
+
+
+// function Foo() {
+//   this.a = 1;
+//   this.b = 2;
+// }
+ 
+// Foo.prototype.c = 3;
+ 
+// _.keys(new Foo);
+// // => ['a', 'b'] (iteration order is not guaranteed)
+ 
+// _.keys('hi');
+// // => ['0', '1']
+
+
+
+//Merge
+// var object = {
+//   'a': [{ 'b': 2 }, { 'd': 4 }]
+// };
+ 
+// var other = {
+//   'a': [{ 'c': 3 }, { 'e': 5 }]
+// };
+ 
+// _.merge(object, other);
+// // => { 'a': [{ 'b': 2, 'c': 3 }, { 'd': 4, 'e': 5 }] }
+
+
+
+
+// //pick
+// var object = { 'a': 1, 'b': '2', 'c': 3 };
+ 
+// console.log(_.pick(object, ['a', 'c']));
+// // => { 'a': 1, 'c': 3 }
+
+
+//values
+
+// function Foo() {
+//   this.a = 1;
+//   this.b = 2;
+// }
+ 
+// Foo.prototype.c = 3;
+ 
+// _.values(new Foo);
+// // => [1, 2] (iteration order is not guaranteed)
+ 
+// _.values('hi');
+// => ['h', 'i']
+</script>
+</head>
+<body>
+
+</body>
+</html>
